@@ -45,7 +45,7 @@ Filename: './data/<dataset>/nodes.csv'
 
 *Location and Name*: Place the edge list of time spell `i` under the `./data/<dataset>/TS<i>` folder with the name of `'user.edgelist'`.
 
-*Format*: An un-directional edge between nodes `a` and `b` can be denoted with `a<space>b` or `b<space>a`. Each edge takes a new line. If the graph is weighted, each edge can be denoted as `a<space>b<space>w`.
+*Format*: An un-directional edge between nodes `a` and `b` can be denoted with `a<space>b` or `b<space>a`. Each edge takes a new line.
 
 ```text
 Example 1 (un-weighted, default):
@@ -56,18 +56,9 @@ Filename: './data/<dataset>/TS1/user.edgelist'
 . .
 ```
 
-```text
-Example 2 (weighted):
-Filename: './data/<dataset>/TS1/user.edgelist'
-0 1 1.0
-1 2 0.5
-3 1 0.785
-. . .
-```
-
 ### Nodal Features
 
-*Location and Name*: Nodal features of time spell `i` is stored under the `./data/<dataset>/TS<i>/` folder titled `'feature.csv'`.
+*Location and Name*: Nodal features of time spell `i` is stored under the `./data/<dataset>/TS<i>/` folder titled `'features.csv'`.
 
 *Format*: For `d`-dimension nodal features, each row has `d+1` values, with userID followed by `d` features.
 
