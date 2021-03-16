@@ -115,17 +115,17 @@ The `./calculate.py` script calculates the temporal shifts between time spells:
 ## Usage
 
 ```text
-usage: ehi.py [-h] --dataset {pastebin} --timespells TIMESPELLS
+usage: ehi.py [-h] --dataset DATASET --timespells TIMESPELLS
               [--have_features HAVE_FEATURES]
               [--feature_header FEATURE_HEADER]
               [--weighted_graph WEIGHTED_GRAPH] [--models MODELS]
               [--step {P,B,C,A}]
 
-Automated GVA Processor.
+Automated EHI Processor.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --dataset {pastebin}  Process 'user' or 'repo' dataset.
+  --dataset DATASET     Name the dataset.
   --timespells TIMESPELLS
                         The number of time spells for analysis
   --have_features HAVE_FEATURES
