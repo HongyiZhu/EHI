@@ -8,8 +8,8 @@ import os
 
 
 def get_parser():
-    parser = argparse.ArgumentParser(description='Automated GVA Processor.')
-    parser.add_argument("--dataset", type=str, required=True, choices=['pastebin'], help="Process 'user' or 'repo' dataset.")
+    parser = argparse.ArgumentParser(description='Automated EHI Processor.')
+    parser.add_argument("--dataset", type=str, required=True, help="Name the dataset.")
     parser.add_argument("--timespells", type=int, required=True, help="The number of time spells for analysis")
 
     parser.add_argument("--have_features", type=ast.literal_eval, required=False, help="Whether the network has nodal features, default=True.", default=True)
@@ -87,8 +87,8 @@ if __name__ == '__main__':
     if args.step == "B" or args.step == "A":
         # For each feature matrix, generate node embeddings and cluster them
         _build = subprocess.run(["python", "build.py", "--json_path", f"{json_path}"])
-    if args.step == "C" or args.step == "A":
-        # Compare embeddings of each 
-        _calc = subprocess.run(["python", "calculate.py", "--json_path", f"{json_path}"])
+    # if args.step == "C" or args.step == "A":
+    #     # Compare embeddings of each 
+    #     _calc = subprocess.run(["python", "calculate.py", "--json_path", f"{json_path}"])
 
     
