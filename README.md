@@ -89,17 +89,17 @@ The `./ehi.py` script (usage [here](#usage)) automates the following steps:
 
 ### Step 1. Preprocessing
 
-The `./preprocess_data.py` script parse nodal feature CSVs and generate corresponding `.features` files under the `./data/<dataset>/TS<i>/` folder.
+The `./preprocess_data.py` script parse nodal feature CSVs and generate corresponding `.features` files under the `./data/<dataset>/TS<i>/` folder. This script will not execute when "--have_features" is set to `False`.
 
 Then the `./preprocess_graph.py` script parse edge lists into graphs.
 
 ### Step 2. Building Node Embedding
 
-The `./build.py` script builds node embeddings for the selected datset and evaluate the quality of generated embeddings.
+The `./build.py` script builds node embeddings for the selected dataset and evaluate the quality of generated embeddings.
 
 ### Step 3. Calculating Temporal Shifts
 
-The `./calculate.py` script calculates the temporal shifts between time spells:
+The `./calculate.py` script calculates the temporal shifts and cosine similarities between time spells:
 
 + Dataset configuration: `./data/<dataset>/config.json`
 + Embeddings: `./embeddings/<dataset>/TS<i>/<GE model>.nv`  
@@ -111,6 +111,17 @@ The `./calculate.py` script calculates the temporal shifts between time spells:
     n2 ...
     .  ...
     ```
+
++ Results: `./results/<dataset>/<GE model>.csv`
+
+  ```csv
+  NodeID, Shift1, Shift2, ..., Shift<TS-1>, Sim1, Sim2, ..., Sim<TS-1>
+  0, ., ., ..., ., ., ., ..., .
+  1, ., ., ..., ., ., ., ..., .
+  2, ., ., ..., ., ., ., ..., .
+  ...
+  ...
+  ```
 
 ## Usage
 
@@ -142,4 +153,6 @@ optional arguments:
                         steps), default=A.
 ```
 
-### *Example 1*
+### *Example*
+
+Run all steps with no nodal feature on 4 time spells: `python ./ehi.py --dataset DATASET --have_features False --timespells 4 --steps A`
