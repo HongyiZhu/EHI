@@ -67,6 +67,7 @@ if __name__ == '__main__':
 
     configs.DATA_PATH = f"./data/{dataset}/"
     configs.EMBEDDING_PATH = f"./embeddings/{dataset}/"
+    configs.RESULT_PATH = f"./results/{dataset}/"
     
     json_configs = dotdict2dict(configs)
 
@@ -88,8 +89,6 @@ if __name__ == '__main__':
     if args.step == "B" or args.step == "A":
         # For each feature matrix, generate node embeddings and cluster them
         _build = subprocess.run(["python", "build.py", "--json_path", f"{json_path}"])
-    # if args.step == "C" or args.step == "A":
-    #     # Compare embeddings of each 
-    #     _calc = subprocess.run(["python", "calculate.py", "--json_path", f"{json_path}"])
-
-    
+    if args.step == "C" or args.step == "A":
+        # Compare embeddings of each 
+        _calc = subprocess.run(["python", "calculate.py", "--json_path", f"{json_path}"])
