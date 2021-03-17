@@ -155,4 +155,4 @@ optional arguments:
 
 ### *Example*
 
-Run all steps with no nodal feature on 4 time spells: `python ./ehi.py --dataset DATASET --have_features False --timespells 4 --steps A`
+Run all steps with no nodal feature on 4 time spells: `python ./ehi.py --dataset DATASET --have_features False --timespells 4 --step A`
