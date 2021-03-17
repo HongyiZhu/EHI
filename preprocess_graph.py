@@ -55,9 +55,15 @@ def main(configs):
 
     # load features
     for ts in range(1, int(timespells)+1):
-        feature_filename = f"{configs.DATA_PATH}/TS{ts}/generated/user.features"
-        accu_graphs[ts-1].read_node_features(feature_filename)
-        accu_graphs_str[ts-1].read_node_features(feature_filename)
+        if configs.have_features:
+            feature_filename = f"{configs.DATA_PATH}/TS{ts}/generated/user.features"
+            accu_graphs[ts-1].read_node_features(feature_filename)
+            accu_graphs_str[ts-1].read_node_features(feature_filename)
+        else:
+            for node in accu_graphs[ts-1].G.nodes:
+                accu_graphs[ts-1].G.nodes[node]['feature'] = [1,]
+            for node in accu_graphs_str[ts-1].G.nodes:
+                accu_graphs_str[ts-1].G.nodes[node]['feature'] = [1,]
 
     # save generated graphs
     for ts in range(1, int(timespells)+1):

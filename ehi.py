@@ -79,8 +79,9 @@ if __name__ == '__main__':
         for ts in range(1, int(args.timespells)+1):
             Path(f"./data/{dataset}/TS{str(ts)}/generated").mkdir(parents=True, exist_ok=True)
             Path(f"./embeddings/{dataset}/TS{str(ts)}").mkdir(parents=True, exist_ok=True)
-        # Run preprocess_data.py to preprocess data features
-        _preprocess = subprocess.run(["python", "preprocess_data.py", "--json_path", f"{json_path}"])
+        if configs.have_features:
+            # Run preprocess_data.py to preprocess data features
+            _preprocess = subprocess.run(["python", "preprocess_data.py", "--json_path", f"{json_path}"])
         # Run preprocess_graph.py to preprocess graphs for each time spell
         _preprocess = subprocess.run(["python", "preprocess_graph.py", "--json_path", f"{json_path}"])
 
