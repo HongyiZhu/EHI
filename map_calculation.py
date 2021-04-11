@@ -51,6 +51,7 @@ for ts in range(1, int(timespells)+1):
 
 f = open(f"{configs.RESULT_PATH}/MAP.csv", "w")
 header = "Model, " + ", ".join(["TS" + str(i) for i in range(1, timespells + 1)]) + "\n"
+f.write(header)
 for model in configs.models:
     row = model + ", " + ", ".join([str(reconstruction_performance[model][i]) for i in range(1, timespells + 1)]) + "\n"
     f.write(row)
